@@ -1,0 +1,102 @@
+var body;
+var window_height = $(window).height();
+$(function() {
+  body = $("body");
+
+    $("div[id^='w_common_text']").each(function() {
+    //	$(this).find("span:last").wrap("<div class='w-ani'></div>");
+    });
+    
+    $("img[lazy-src]").each(function() {
+    	$(this).attr("src", $(this).attr("lazy-src")).removeAttr("lazy-src");
+    });
+  
+    setTimeout(function() {
+      index();    
+    }, 500);
+
+});
+
+
+function index() {
+  var anis = [$("#w_grid-1561704655653")];
+  anis.push($("#w_fimgbox-1561706298635"));
+  anis.push($("#w_fimgbox-1561709286803"));
+  anis.push($("#w_fimgbox-1561709563089"));
+  anis.push($("#w_fimgbox-1561709827390"));
+  anis.push($("#w_fimgbox-1570534385970"));
+  anis.push($("#w_fimgbox-1570525375900"));
+    anis.push($("#w_grid-1584336608199"));
+  anis.push($("#w_grid-1561704304089"));
+  anis.push($("#w_grid-1561714421783"));
+  anis.push($("#w_grid-1561716677225"));
+    anis.push($("#w_grid-1565316084770"));
+   anis.push($("#w_grid-1564731665792"));
+     anis.push($("#w_grid-1564562173588"));
+   anis.push($("#w_grid-1564562173600"));
+   anis.push($("#w_grid-1563703139056"));
+  anis.push($("#w_carouselbox-1565327159348"));
+   anis.push($("#w_grid-1585907549422"));
+   anis.push($("#w_grid-1564732670584"));
+    anis.push($("#w_grid-1565316084770"));
+  anis.push($("#w_grid-1565313751222"));
+
+     anis.push($("#w_grid-1566895864649"));
+   anis.push($("#w_grid-1566885426872"));
+  anis.push($("#w_grid-1566888248037"));
+   anis.push($("#w_grid-1566886491122"));
+   anis.push($("#w_grid-1566887682640"));
+    anis.push($("#w_grid-1585923868970"));
+  
+     anis.push($("#w_grid-1567654274396"));
+   anis.push($("#w_grid-1567654274416"));
+  anis.push($("#w_grid-1567654274506"));
+   anis.push($("#w_grid-1567654274536"));
+   anis.push($("#w_grid-1585924376595"));
+    anis.push($("#w_grid-1567654274696"));
+    anis.push($("#w_grid-1567654274716"));
+    anis.push($("#w_grid-1567654274536"));
+
+    anis.push($("#w_grid-1569482757936"));
+    anis.push($("#w_grid-1569545070720"));
+
+   anis.push($("#w_grid-1559722622833"));
+    anis.push($("#w_grid-1559722052220"));
+
+    anis.push($("#w_grid-1559723295890"));
+
+
+
+
+
+
+  
+  anis.push($("#c_portalResNews_list-15843413870187913 .xNewList"));
+    anis.push($("#w_grid-1584339634355"));
+  anis.push($("#PhotoList_k1"));
+  $.each(anis, function(i,v) {
+  	v.addClass("w-scroll-ani");
+  });
+  function handle() {
+  	var t = $(window).scrollTop();
+    var w = $(".w-scroll-ani:not(.scrolled)");
+    w.each(function() {
+      var top = $(this).offset().top;
+      if(top < (window_height + t - 30)) {
+      	$(this).addClass("scrolled");
+      }
+    });
+    if(window_height + t == body.height()) {
+    	$(".w-scroll-ani:not(.scrolled)").each(function() {
+          var top = $(this).offset().top;
+          if(top > (body.height() - window_height)) {
+            $(this).addClass("scrolled");
+          }
+        });
+    }
+  }
+  $(window).scroll(function() {
+  	handle();
+  });
+  handle();
+}
